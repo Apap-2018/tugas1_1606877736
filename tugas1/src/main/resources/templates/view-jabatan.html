@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <object th:include="fragments/fragment :: title" th:remove="tag"></object>
+
+    <object th:include="fragments/fragment :: css" th:remove="tag"></object>
+    <object th:include="fragments/fragment :: js" th:remove="tag"></object>
+</head>
+<body>
+
+<nav th:replace="fragments/fragment :: navbar"></nav>
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-3"></div>
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-header">
+                    <div th:text="'Detail Jabatan ' + ${jabatan.nama}"></div>
+                </div>
+                <div class="card-body">
+                    <table>
+                        <tr>
+                            <td>
+                                Nama :
+                            </td>
+                            <td th:text="${jabatan.nama}"></td>
+                        </tr>
+                        <tr>
+                            <td>
+                                Deskripsi :
+                            </td>
+                            <td th:text="${jabatan.deskripsi}"></td>
+                        </tr>
+                        <tr>
+                            <td>
+                                Gaji Pokok :
+                            </td>
+                            <td th:text="${jabatan.gaji_pokok}"></td>
+                        </tr>
+                    </table>
+                    <form th:action="@{/jabatan/ubah}" method="GET">
+                        <input type="hidden" name="idJabatan" th:value="${jabatan.id}" class="form-control" />
+                        <button type="submit" class="btn btn-warning">Update</button>
+                    </form>
+                    <form th:action="@{/jabatan/hapus}" method="GET">
+                        <input type="hidden" name="idJabatan" th:value="${jabatan.id}" class="form-control" />
+                        <button type="submit" class="btn btn-danger">Delete</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+</div>
+</body>
+</html>

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <object th:include="fragments/fragment :: title" th:remove="tag"></object>
+
+    <object th:include="fragments/fragment :: css" th:remove="tag"></object>
+    <object th:include="fragments/fragment :: js" th:remove="tag"></object>
+</head>
+<body>
+
+<nav th:replace="fragments/fragment :: navbar"></nav>
+
+<div class="container-fluid">
+    <div class="col-md-3"></div>
+    <div class="row">
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-header">
+                    Tambahkan Jabatan
+                </div>
+                <form th:action="@{/jabatan/tambah}" th:object="${jabatan}" method = "POST">
+                    <div class="card-body">
+                        <table>
+                            <tr>
+                                <td>Nama :</td>
+                                <td><input type="text" name="nama" class="form-control" /></td>
+                            </tr>
+                            <tr>
+                                <td> Deskripsi : </td>
+                                <td><input type="text" name="deskripsi" class="form-control" /></td>
+                            </tr>
+                            <tr>
+                                <td>Gaji Pokok :</td>
+                                <td><input type="text" name="gaji_pokok" class="form-control" /></td>
+                            </tr>
+                            <tr>
+                                <td></td>
+                                <td><button type="submit" class="btn btn-primary">Tambahkan</button> </td>
+                            </tr>
+                        </table>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+
+</div>
+</body>
+</html>

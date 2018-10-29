@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <object th:include="fragments/fragment :: title" th:remove="tag"></object>
+    <object th:include="fragments/fragment :: css" th:remove="tag"></object>
+    <object th:include="fragments/fragment :: js" th:remove="tag"></object>
+</head>
+<body>
+
+<nav th:replace="fragments/fragment :: navbar"></nav>
+
+<div class="container-fluid">
+    <h2>Welcome to Sistim Informasi Pegawai (SIPEG) </h2>
+    <div class="row">
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-header">
+                    Cari Pegawai berdasarkan NIP
+                </div>
+                <form th:action="@{/pegawai}" method="GET">
+                    <div class="card-body">
+                        <label for="nip">Nip Pegawai:</label>
+                        <input type="text" name="nip" class="form-control" id="nip"/>
+                        <button type="submit" class="btn btn-primary">Cari</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <br>
+    <div class="row">
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-header">
+                    Lihat Detil Jabatan
+                </div>
+                <div class="card-body">
+                    <div class="form-control">
+                        <table>
+                            <tr>
+                                <th>Pilih Jabatan :</th>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <form th:action="@{/jabatan/view}">
+                                        <select class="form-control"  name="idJabatan">
+                                            <option th:each="jabatan : ${listJabatan}" th:text="${jabatan.nama}" th:value="${jabatan.id}"></option>
+                                        </select>
+                                        <button type="submit" class="btn btn-primary">Lihat</button>
+                                    </form>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

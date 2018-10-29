@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:td="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <object th:include="fragments/fragment :: title" th:remove="tag"></object>
+
+    <object th:include="fragments/fragment :: css" th:remove="tag"></object>
+    <object th:include="fragments/fragment :: js" th:remove="tag"></object>
+</head>
+<body>
+
+<nav th:replace="fragments/fragment :: navbar"></nav>
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-3"></div>
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-header">
+                    <h2 th:text="'Identitas Pegawai ' + ${pegawai.nip}">Identitas</h2>
+                </div>
+                <div class="card-body">
+                    <table>
+                    <tr>
+                        <td>NIP</td>
+                        <td th:text="${pegawai.nip}"></td>
+                    </tr>
+
+                    <tr>
+                        <td>Nama</td>
+                        <td th:text="${pegawai.nama}"></td>
+                    </tr>
+                    <tr>
+                        <td>Tempat Lahir</td>
+                        <td th:text="${pegawai.tempatLahir}"></td>
+                    </tr>
+                    <tr>
+                        <td>Tanggal Lahir</td>
+                        <td th:text="${pegawai.tanggalLahir}"></td>
+                    </tr>
+                    <tr>
+                        <td>Tahun Masuk</td>
+                        <td th:text="${pegawai.tahunMasuk}"></td>
+                    </tr>
+                    <tr>
+                        <td>Nama Instansi</td>
+                        <td th:text="${pegawai.instansi.nama}"></td>
+                    </tr>
+                    <tr>
+                        <td>Jabatan</td>
+                        <td>
+                            <div  th:each="jabatan : ${listJabatan}">
+                                <p th:text="${jabatan.nama}"></p>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Gaji Bersih</td>
+                        <td th:text="${gajiBersih}"></td>
+                    </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+</div>
+</body>
+</html>
